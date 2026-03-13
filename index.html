@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foxcam - Best Virtual Camera App Android (2026)</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "FoxCam Android Virtual Camera",
+      "operatingSystem": "Android",
+      "applicationCategory": "UtilitiesApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free 1-Hour Trial Available"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How to install virtual camera on android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To install virtual camera on Android: (1) Root your device with Magisk, (2) Enable Zygisk in Magisk settings, (3) Install LSPosed framework, (4) Download Foxcam virtual camera APK, (5) Flash it as a Magisk module, (6) Enable Foxcam in LSPosed Manager, (7) Select target apps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How to fix black screen on virtual camera android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To fix black screen on virtual camera android: ensure root permissions are granted to the vcam module, verify your video file path is readable (/sdcard/DCIM/), and confirm Zygisk is enabled in Magisk settings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does virtual camera require root?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Foxcam virtual camera app requires root access (Magisk) and Zygisk/LSPosed to function. System-level camera feed replacement requires root privileges to inject video at the hardware abstraction layer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best virtual camera app for android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Foxcam is the best virtual camera app for rooted Android devices. It offers native HAL hooking, zero color distortion, LSPosed virtual camera module support, and Android 11-15 compatibility."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        /* ============================================
+           CONFIGURATION - EASY TO MODIFY
+           ============================================ */
+        :root {
+            /* Brand Colors */
+            --color-primary-blue: #5B9DFF;
+            --color-secondary-blue: #4A8EEE;
+            --color-success-green: #4CD964;
+            --color-bg-dark: #0A0E1A;
+            --color-bg-card: #1A2332;
+            --color-bg-darker: #0F1729;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg-dark);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-primary-blue);
+            border-radius: 4px;
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--color-bg-dark);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        /* Slick Dots Custom Styling */
+        .slick-dots {
+            bottom: -35px !important;
+        }
+
+        .slick-dots li button:before {
+            color: var(--color-primary-blue) !important;
+            font-size: 10px !important;
+        }
+        
+        .slick-dots li.slick-active button:before {
+            color: var(--color-primary-blue) !important;
+            opacity: 1 !important;
+        }
+        
+        /* Animation for pulsing dot */
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        .animate-ping {
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        
+        .slick-slide {
+            outline: none !important;
+        }
+
+        /* Smartphone Frame Styles */
+        .phone-frame {
+            position: relative;
+            width: 280px;
+            margin: 0 auto;
+            padding: 12px;
+            background: linear-gradient(145deg, #1f2937, #111827);
+            border-radius: 36px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 28px;
+            background: linear-gradient(145deg, #1f2937, #111827);
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .phone-notch::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 5px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+
+        .phone-notch::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            right: 20px;
+            width: 8px;
+            height: 8px;
+            background: rgba(91, 157, 255, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(91, 157, 255, 0.5);
+        }
+
+        .phone-screen {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9/19.5;
+            background: #000;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .phone-buttons {
+            position: absolute;
+            right: -3px;
+            top: 80px;
+            width: 3px;
+            height: 60px;
+            background: linear-gradient(145deg, #374151, #1f2937);
+            border-radius: 2px 0 0 2px;
+        }
+
+        .phone-buttons::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 80px;
+            width: 3px;
+            height: 40px;
+            background: linear-gradient(145deg, #374151, #1f2937);
+            border-radius: 2px 0 0 2px;
+        }
+
+        .phone-buttons::after {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 100px;
+            width: 3px;
+            height: 80px;
+            background: linear-gradient(145deg, #374151, #1f2937);
+            border-radius: 0 2px 2px 0;
+        }
+
+        .screenshot-glow {
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle at center, rgba(91, 157, 255, 0.15), transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @media (max-width: 640px) {
+            .phone-frame {
+                width: 260px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<script>
+/* ============================================
+   CONFIGURATION SECTION - MODIFY LINKS & IMAGES HERE
+   ============================================ */
+
+const TELEGRAM_CHANNEL = "https://t.me/FoxCam_Boss";
+
+const LOGO_URL = "https://res.cloudinary.com/dvhtkuu9y/image/upload/v1771627450/app_logo_dp6erf.webp";
+const SCREENSHOT_1_URL = "https://res.cloudinary.com/dvhtkuu9y/image/upload/v1771627645/1_dwnwkg.jpg";
+const SCREENSHOT_2_URL = "https://res.cloudinary.com/dvhtkuu9y/image/upload/v1771627645/2_mfxkhk.jpg";
+const SCREENSHOT_3_URL = "https://res.cloudinary.com/dvhtkuu9y/image/upload/v1771627645/3_y42nyn.jpg";
+const SCREENSHOT_4_URL = "https://res.cloudinary.com/dvhtkuu9y/image/upload/v1771629781/gif_i3ujga.gif";
+
+const APP_NAME = "Foxcam";
+const APP_VERSION = "2026 Latest Version";
+const APP_RATING = "4.8";
+const TOTAL_REVIEWS = "1,250+";
+
+/* ============================================
+   END OF CONFIGURATION SECTION
+   ============================================ */
+</script>
+
+<div class="min-h-screen">
+    
+    <section class="relative overflow-hidden pb-6">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#5B9DFF]/20 via-[#5B9DFF]/10 to-transparent"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-10 w-40 h-40 bg-[#5B9DFF]/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-40 right-10 w-60 h-60 bg-[#4CD964]/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="relative px-4 pt-8 pb-6">
+            <div class="text-center mb-6">
+                <div class="flex justify-center mb-6">
+                    <div class="w-28 h-28 rounded-full bg-gradient-to-br from-[#1A2332] to-[#0F1729] p-1 border-2 border-[#5B9DFF]/30 shadow-lg shadow-[#5B9DFF]/20">
+                        <img id="logo-img" alt="Foxcam Logo" class="w-full h-full rounded-full object-cover">
+                    </div>
+                </div>
+
+                <div class="inline-flex items-center gap-2 bg-[#1A2332] backdrop-blur-sm border border-[#5B9DFF]/30 px-4 py-2 rounded-full mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4CD964] opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-[#4CD964]"></span>
+                    </span>
+                    <span class="text-sm text-[#5B9DFF]" id="app-version"></span>
+                </div>
+                
+                <h1 class="text-3xl leading-tight mb-4 px-2">
+                    Best Virtual Camera App Android (2026)
+                </h1>
+                <div class="text-2xl leading-tight mb-6 px-2">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#5B9DFF] via-[#4CD964] to-[#5B9DFF]">
+                        Camera Spoofer APK Without LSPosed & Zygisk
+                    </span>
+                </div>
+                
+                <p class="text-base text-gray-300 px-4 mb-8 leading-relaxed">
+                    Download Foxcam - the ultimate virtual camera android app for rooted devices. Replace
+                    your camera feed with pre-recorded video files using native HAL hooking. Works in any
+                    android 10, 11, 13 rooted device, spoofer with zero color distortion.
+                </p>
+
+                <div class="flex flex-col gap-3 px-4 mb-6">
+                    <a id="download-btn" target="_blank" rel="noopener noreferrer"
+                       class="w-full bg-gradient-to-r from-[#5B9DFF] to-[#4A8EEE] hover:from-[#4A8EEE] hover:to-[#5B9DFF] text-white px-6 py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-[#5B9DFF]/30 active:scale-95">
+                        <i data-lucide="download" class="w-5 h-5"></i>
+                        <span class="text-lg">Download Foxcam APK</span>
+                    </a>
+                    <button onclick="document.getElementById('installation-guide').scrollIntoView({ behavior: 'smooth' })"
+                            class="w-full bg-[#1A2332] backdrop-blur-sm hover:bg-[#1F2937] text-white px-6 py-4 rounded-2xl flex items-center justify-center gap-2 transition-all border border-[#5B9DFF]/20 active:scale-95">
+                        <i data-lucide="file-text" class="w-5 h-5 text-[#5B9DFF]"></i>
+                        <span class="text-lg">How to Install FoxCam</span>
+                    </button>
+                </div>
+
+                <div class="inline-flex items-center gap-2 bg-[#4CD964]/10 backdrop-blur-sm border border-[#4CD964]/30 px-5 py-3 rounded-full">
+                    <i data-lucide="shield" class="w-5 h-5 text-[#4CD964]"></i>
+                    <i data-lucide="check-circle-2" class="w-5 h-5 text-[#4CD964]"></i>
+                    <span class="text-sm text-[#4CD964]">VirusTotal Safe & Scanned</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BYPASS SHOWCASE SECTION ===== -->
+    <section class="px-4 py-10 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0F1729]/80 to-transparent pointer-events-none"></div>
+
+        <div class="text-center mb-8 relative">
+            <span class="inline-block bg-red-500/20 border border-red-500/40 text-red-400 text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-3">Bypass Showcase</span>
+            <h2 class="text-2xl px-2 leading-tight">Foxcam <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#5B9DFF] to-[#4CD964]">Defeats</span> Industry Leaders</h2>
+            <p class="text-sm text-gray-400 mt-2 px-4">The world's top selfie verification & liveness detection services — all bypassed</p>
+        </div>
+
+        <!-- Flow Diagram -->
+        <div class="relative flex items-center justify-between gap-2 max-w-sm mx-auto" style="min-height:220px;">
+
+            <!-- LEFT: Service logos -->
+            <div class="flex flex-col gap-4 z-10" id="bypass-services">
+                <!-- Veriff -->
+                <div class="bypass-service-card flex items-center gap-2 bg-[#1A2332]/90 border border-red-500/30 rounded-xl px-3 py-2.5 shadow-lg" style="animation-delay:0s">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-xs font-bold">V</span>
+                    </div>
+                    <div>
+                        <div class="text-sm font-semibold text-white leading-none">Veriff</div>
+                        <div class="text-xs text-red-400 mt-0.5">KYC · Selfie ID</div>
+                    </div>
+                </div>
+                <!-- Onfido -->
+                <div class="bypass-service-card flex items-center gap-2 bg-[#1A2332]/90 border border-red-500/30 rounded-xl px-3 py-2.5 shadow-lg" style="animation-delay:0.15s">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-xs font-bold">O</span>
+                    </div>
+                    <div>
+                        <div class="text-sm font-semibold text-white leading-none">Onfido</div>
+                        <div class="text-xs text-red-400 mt-0.5">Liveness · AI</div>
+                    </div>
+                </div>
+                <!-- FaceTec -->
+                <div class="bypass-service-card flex items-center gap-2 bg-[#1A2332]/90 border border-red-500/30 rounded-xl px-3 py-2.5 shadow-lg" style="animation-delay:0.3s">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-500 to-purple-800 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-xs font-bold">F</span>
+                    </div>
+                    <div>
+                        <div class="text-sm font-semibold text-white leading-none">FaceTec</div>
+                        <div class="text-xs text-red-400 mt-0.5">3D Liveness</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CENTER: Foxcam logo with flow lines -->
+            <div class="relative flex flex-col items-center z-20 flex-shrink-0" style="width:80px;">
+                <!-- Animated flow particles left to center -->
+                <canvas id="flow-canvas" width="300" height="220" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:5;"></canvas>
+
+                <!-- Fox logo circle -->
+                <div class="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#5B9DFF] to-[#4A8EEE] shadow-xl shadow-[#5B9DFF]/40 flex items-center justify-center border-2 border-[#5B9DFF]/60 z-10" style="animation: foxPulse 2s ease-in-out infinite;">
+                    <img src="https://res.cloudinary.com/dvhtkuu9y/image/upload/v1771627450/app_logo_dp6erf.webp" alt="Foxcam" class="w-12 h-12 rounded-full object-cover">
+                    <!-- Ripple rings -->
+                    <div class="absolute inset-0 rounded-full border-2 border-[#5B9DFF]/40" style="animation: ripple 2s ease-out infinite;"></div>
+                    <div class="absolute inset-0 rounded-full border-2 border-[#5B9DFF]/20" style="animation: ripple 2s ease-out infinite 0.5s;"></div>
+                </div>
+                <div class="text-xs text-[#5B9DFF] font-bold mt-2 text-center leading-tight">FOXCAM</div>
+            </div>
+
+            <!-- RIGHT: Bypassed outputs -->
+            <div class="flex flex-col gap-4 z-10">
+                <div class="bypass-output-card flex items-center gap-2 bg-[#4CD964]/10 border border-[#4CD964]/40 rounded-xl px-3 py-2.5 shadow-lg">
+                    <div class="w-6 h-6 rounded-full bg-[#4CD964] flex items-center justify-center flex-shrink-0">
+                        <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <div>
+                        <div class="text-xs font-semibold text-[#4CD964] leading-none">Selfie Verify</div>
+                        <div class="text-xs text-[#4CD964]/70 mt-0.5 font-bold">BYPASSED ✓</div>
+                    </div>
+                </div>
+                <div class="bypass-output-card flex items-center gap-2 bg-[#4CD964]/10 border border-[#4CD964]/40 rounded-xl px-3 py-2.5 shadow-lg">
+                    <div class="w-6 h-6 rounded-full bg-[#4CD964] flex items-center justify-center flex-shrink-0">
+                        <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <div>
+                        <div class="text-xs font-semibold text-[#4CD964] leading-none">Liveness Check</div>
+                        <div class="text-xs text-[#4CD964]/70 mt-0.5 font-bold">BYPASSED ✓</div>
+                    </div>
+                </div>
+                <div class="bypass-output-card flex items-center gap-2 bg-[#4CD964]/10 border border-[#4CD964]/40 rounded-xl px-3 py-2.5 shadow-lg">
+                    <div class="w-6 h-6 rounded-full bg-[#4CD964] flex items-center justify-center flex-shrink-0">
+                        <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <div>
+                        <div class="text-xs font-semibold text-[#4CD964] leading-none">3D Face Scan</div>
+                        <div class="text-xs text-[#4CD964]/70 mt-0.5 font-bold">BYPASSED ✓</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom label -->
+        <div class="text-center mt-8">
+            <div class="inline-flex items-center gap-2 bg-[#1A2332]/80 border border-[#5B9DFF]/30 px-5 py-3 rounded-2xl">
+                <span class="text-[#4CD964]">🦊</span>
+                <span class="text-sm text-gray-300">Foxcam is the <span class="text-white font-semibold">ultimate selfie verification & liveness bypass</span> solution</span>
+            </div>
+        </div>
+    </section>
+
+    <style>
+    @keyframes foxPulse {
+        0%,100% { box-shadow: 0 0 20px rgba(91,157,255,0.4), 0 0 40px rgba(91,157,255,0.2); }
+        50% { box-shadow: 0 0 30px rgba(91,157,255,0.7), 0 0 60px rgba(91,157,255,0.3); }
+    }
+    @keyframes ripple {
+        0% { transform: scale(1); opacity: 0.6; }
+        100% { transform: scale(2.2); opacity: 0; }
+    }
+    .bypass-service-card {
+        animation: slideInLeft 0.5s ease both;
+    }
+    .bypass-output-card {
+        animation: slideInRight 0.5s ease both;
+    }
+    @keyframes slideInLeft {
+        from { opacity:0; transform: translateX(-20px); }
+        to { opacity:1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+        from { opacity:0; transform: translateX(20px); }
+        to { opacity:1; transform: translateX(0); }
+    }
+    .bypass-output-card:nth-child(1) { animation-delay: 0.8s; }
+    .bypass-output-card:nth-child(2) { animation-delay: 1.1s; }
+    .bypass-output-card:nth-child(3) { animation-delay: 1.4s; }
+    </style>
+
+    <script>
+    // Animated flow particles: left cards → Foxcam center → right cards
+    (function() {
+        function initFlowCanvas() {
+            const canvas = document.getElementById('flow-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const W = canvas.width, H = canvas.height;
+            const cx = W / 2, cy = H / 2;
+
+            // Source points (left side, 3 cards)
+            const sources = [
+                { x: 10, y: cy - 60 },
+                { x: 10, y: cy },
+                { x: 10, y: cy + 60 },
+            ];
+            // Target points (right side, 3 cards)
+            const targets = [
+                { x: W - 10, y: cy - 60 },
+                { x: W - 10, y: cy },
+                { x: W - 10, y: cy + 60 },
+            ];
+
+            const particles = [];
+
+            function createParticle(fromSide) {
+                if (fromSide === 'left') {
+                    const src = sources[Math.floor(Math.random() * sources.length)];
+                    return { sx: src.x, sy: src.y, ex: cx, ey: cy, phase: 'toCenter', progress: 0, speed: 0.008 + Math.random()*0.008 };
+                } else {
+                    const tgt = targets[Math.floor(Math.random() * targets.length)];
+                    return { sx: cx, sy: cy, ex: tgt.x, ey: tgt.y, phase: 'fromCenter', progress: 0, speed: 0.008 + Math.random()*0.008 };
+                }
+            }
+
+            for (let i = 0; i < 12; i++) {
+                const p = createParticle(i < 6 ? 'left' : 'right');
+                p.progress = Math.random();
+                particles.push(p);
+            }
+
+            function bezier(t, sx, sy, ex, ey) {
+                const cpx = (sx + ex) / 2;
+                const cpy = (sy + ey) / 2 + (sy - cy) * 0.3;
+                const x = (1-t)*(1-t)*sx + 2*(1-t)*t*cpx + t*t*ex;
+                const y = (1-t)*(1-t)*sy + 2*(1-t)*t*cpy + t*t*ey;
+                return { x, y };
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, W, H);
+
+                sources.forEach(s => {
+                    const cp = { x: (s.x + cx)/2, y: (s.y + cy)/2 + (s.y - cy)*0.3 };
+                    ctx.beginPath();
+                    ctx.moveTo(s.x, s.y);
+                    ctx.quadraticCurveTo(cp.x, cp.y, cx, cy);
+                    ctx.strokeStyle = 'rgba(91,157,255,0.07)';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                });
+                targets.forEach(t => {
+                    const cp = { x: (cx + t.x)/2, y: (cy + t.y)/2 + (cy - t.y)*0.3 };
+                    ctx.beginPath();
+                    ctx.moveTo(cx, cy);
+                    ctx.quadraticCurveTo(cp.x, cp.y, t.x, t.y);
+                    ctx.strokeStyle = 'rgba(76,217,100,0.07)';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                });
+
+                particles.forEach(p => {
+                    p.progress += p.speed;
+                    if (p.progress >= 1) {
+                        const side = p.phase === 'toCenter' ? 'right' : 'left';
+                        const np = createParticle(side);
+                        Object.assign(p, np);
+                        p.progress = 0;
+                        return;
+                    }
+
+                    const pos = bezier(p.progress, p.sx, p.sy, p.ex, p.ey);
+                    const alpha = Math.sin(p.progress * Math.PI);
+                    const isLeft = p.phase === 'toCenter';
+
+                    const grd = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 8);
+                    grd.addColorStop(0, isLeft ? `rgba(91,157,255,${alpha*0.8})` : `rgba(76,217,100,${alpha*0.8})`);
+                    grd.addColorStop(1, 'transparent');
+                    ctx.beginPath();
+                    ctx.arc(pos.x, pos.y, 8, 0, Math.PI*2);
+                    ctx.fillStyle = grd;
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(pos.x, pos.y, 2.5, 0, Math.PI*2);
+                    ctx.fillStyle = isLeft ? `rgba(91,157,255,${alpha})` : `rgba(76,217,100,${alpha})`;
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(draw);
+            }
+
+            draw();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initFlowCanvas);
+        } else {
+            initFlowCanvas();
+        }
+    })();
+    </script>
+    <!-- ===== END BYPASS SHOWCASE SECTION ===== -->
+
+    <section class="px-4 pb-16 relative">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl mb-3 px-2">App Preview</h2>
+            <p class="text-base text-gray-400 px-2">Experience Foxcam's intuitive interface</p>
+        </div>
+        
+        <div class="relative">
+            <div class="screenshot-glow"></div>
+            <div class="screenshot-slider">
+                <div>
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <div class="phone-buttons"></div>
+                        <div class="phone-screen">
+                            <img id="screenshot-1" alt="Foxcam Home" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <div class="phone-buttons"></div>
+                        <div class="phone-screen">
+                            <img id="screenshot-2" alt="Foxcam Control" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <div class="phone-buttons"></div>
+                        <div class="phone-screen">
+                            <img id="screenshot-3" alt="Foxcam Settings" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <div class="phone-buttons"></div>
+                        <div class="phone-screen">
+                            <img id="screenshot-4" alt="Foxcam GIF" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 py-12">
+        <div class="bg-[#1A2332]/60 backdrop-blur-sm rounded-3xl p-6 border border-[#5B9DFF]/20 shadow-2xl">
+            <h2 class="text-2xl mb-2 text-center">System Requirements</h2>
+            <p class="text-base text-gray-400 text-center mb-8">
+                Does virtual camera require root? Yes - here's what you need.
+            </p>
+
+            <div class="space-y-3 mb-8">
+                <div class="bg-[#0F1729]/60 backdrop-blur-sm rounded-2xl p-4 border border-red-500/30">
+                    <div class="flex items-center gap-3 mb-2">
+                        <i data-lucide="lock" class="w-6 h-6 text-red-400"></i>
+                        <h3 class="text-base">Rooted Android device</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 pl-9">Required for system-level camera hooking</p>
+                </div>
+                
+                <div class="bg-[#0F1729]/60 backdrop-blur-sm rounded-2xl p-4 border border-yellow-500/30">
+                    <div class="flex items-center gap-3 mb-2">
+                        <i data-lucide="smartphone" class="w-6 h-6 text-yellow-400"></i>
+                        <h3 class="text-base">Unlocked bootloader</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 pl-9">Required for rooting process</p>
+                </div>
+                
+                <div class="bg-[#0F1729]/60 backdrop-blur-sm rounded-2xl p-4 border border-[#4CD964]/30">
+                    <div class="flex items-center gap-3 mb-2">
+                        <i data-lucide="download" class="w-6 h-6 text-[#4CD964]"></i>
+                        <h3 class="text-base">20MB free storage</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 pl-9">Lightweight APK size</p>
+                </div>
+                
+                <div class="bg-[#0F1729]/60 backdrop-blur-sm rounded-2xl p-4 border border-[#5B9DFF]/30">
+                    <div class="flex items-center gap-3 mb-2">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-[#5B9DFF]"></i>
+                        <h3 class="text-base">Magisk recommended</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 pl-9">Best compatibility</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <h3 class="text-lg mb-4">Compatible Devices</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between bg-[#0F1729]/60 backdrop-blur-sm px-5 py-3 rounded-xl border border-[#5B9DFF]/20">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#4CD964]"></i>
+                            <span class="text-base">Android 10</span>
+                        </div>
+                        <span class="text-sm px-3 py-1 rounded-full bg-gray-700/50 text-gray-300">Supported</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-[#0F1729]/60 backdrop-blur-sm px-5 py-3 rounded-xl border border-[#5B9DFF]/20">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#4CD964]"></i>
+                            <span class="text-base">Android 11</span>
+                        </div>
+                        <span class="text-sm px-3 py-1 rounded-full bg-gray-700/50 text-gray-300">Supported</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-[#0F1729]/60 backdrop-blur-sm px-5 py-3 rounded-xl border border-[#5B9DFF]/20">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#4CD964]"></i>
+                            <span class="text-base">Android 13</span>
+                        </div>
+                        <span class="text-sm px-3 py-1 rounded-full bg-[#5B9DFF]/20 text-[#5B9DFF] border border-[#5B9DFF]/30">Recommended</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 py-12">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl mb-3 px-2">Why Foxcam is the Best Virtual Camera</h2>
+            <p class="text-base text-gray-400 px-2">
+                Unlike basic fake camera apps, Foxcam solves critical issues with camera feed replacement on rooted Android devices.
+            </p>
+        </div>
+
+        <div class="space-y-4">
+            <div class="bg-[#1A2332]/60 backdrop-blur-sm rounded-2xl p-5 border border-[#5B9DFF]/20 shadow-lg">
+                <h3 class="text-lg mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#5B9DFF] to-[#4CD964]">
+                    Fix Black Screen Virtual Camera Android
+                </h3>
+                
+                <div class="space-y-4">
+                    <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-red-400"></i>
+                            <h4 class="text-sm text-red-400">THE PROBLEM</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">Most virtual camera android apps fail with black screens due to improper permissions, incorrect file paths, or target app incompatibility. This is the #1 issue with camera spoofer apps.</p>
+                    </div>
+                    
+                    <div class="bg-[#4CD964]/10 border border-[#4CD964]/30 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-[#4CD964]"></i>
+                            <h4 class="text-sm text-[#4CD964]">FOXCAM SOLUTION</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">Foxcam's Zygisk camera spoofer integration hooks directly into the Camera2 API at the HAL level, ensuring the OS sees the injected video as legitimate hardware input. No black screens with our virtual camera module.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#1A2332]/60 backdrop-blur-sm rounded-2xl p-5 border border-[#5B9DFF]/20 shadow-lg">
+                <h3 class="text-lg mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#5B9DFF] to-[#4CD964]">
+                    Persistent Root Detection in Camera Apps
+                </h3>
+                
+                <div class="space-y-4">
+                    <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-red-400"></i>
+                            <h4 class="text-sm text-red-400">THE PROBLEM</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">Banking apps like Revolut, Binance, and PayPal use Play Integrity detectors that refuse to run if they detect Magisk, LSPosed modules, or fake camera apps.</p>
+                    </div>
+                    
+                    <div class="bg-[#4CD964]/10 border border-[#4CD964]/30 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-[#4CD964]"></i>
+                            <h4 class="text-sm text-[#4CD964]">FOXCAM SOLUTION</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">Foxcam operates as an LSPosed virtual camera module within the Zygisk environment and supports Magisk DenyList. Combined with Shamiko, our camera spoofer remains invisible to app-level detection.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#1A2332]/60 backdrop-blur-sm rounded-2xl p-5 border border-[#5B9DFF]/20 shadow-lg">
+                <h3 class="text-lg mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#5B9DFF] to-[#4CD964]">
+                    Liveness Detection Failures with Fake Camera Apps
+                </h3>
+                
+                <div class="space-y-4">
+                    <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-red-400"></i>
+                            <h4 class="text-sm text-red-400">THE PROBLEM</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">Advanced KYC systems use Active Liveness (blinking, smiling) and Passive Liveness (iProov Flashmark) that analyze light reflections to detect virtual camera feeds and camera spoofing.</p>
+                    </div>
+                    
+                    <div class="bg-[#4CD964]/10 border border-[#4CD964]/30 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-[#4CD964]"></i>
+                            <h4 class="text-sm text-[#4CD964]">FOXCAM SOLUTION</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">Foxcam maintains zero color distortion by preserving original YUV/NV21 formats. Combined with high-fidelity pre-recorded video camera input, it passes texture-based liveness analysis that defeats older virtual camera apps.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#1A2332]/60 backdrop-blur-sm rounded-2xl p-5 border border-[#5B9DFF]/20 shadow-lg">
+                <h3 class="text-lg mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#5B9DFF] to-[#4CD964]">
+                    Metadata Issues in Camera Feed Replacement
+                </h3>
+                
+                <div class="space-y-4">
+                    <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-red-400"></i>
+                            <h4 class="text-sm text-red-400">THE PROBLEM</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">Standard virtual camera apps strip or fail to spoof EXIF data, GPS coordinates, and device metadata, alerting forensic systems that the camera feed is synthetic.</p>
+                    </div>
+                    
+                    <div class="bg-[#4CD964]/10 border border-[#4CD964]/30 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-[#4CD964]"></i>
+                            <h4 class="text-sm text-[#4CD964]">FOXCAM SOLUTION</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">Foxcam includes advanced EXIF & GPS spoofing for camera input streams, allowing you to alter photo dates, device models, and locations for comprehensive metadata injection with your virtual camera.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#1A2332]/60 backdrop-blur-sm rounded-2xl p-5 border border-[#5B9DFF]/20 shadow-lg">
+                <h3 class="text-lg mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#5B9DFF] to-[#4CD964]">
+                    Virtual Camera Android 14 & 15 Compatibility
+                </h3>
+                
+                <div class="space-y-4">
+                    <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-red-400"></i>
+                            <h4 class="text-sm text-red-400">THE PROBLEM</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">Many existing virtual camera modules and camera spoofer APKs crash on Android 14 and 15 due to changes in the Zygote process and Camera2 API implementation.</p>
+                    </div>
+                    
+                    <div class="bg-[#4CD964]/10 border border-[#4CD964]/30 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-[#4CD964]"></i>
+                            <h4 class="text-sm text-[#4CD964]">FOXCAM SOLUTION</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed">Foxcam is specifically engineered for Android 11-15 with full support for the latest Zygote and Camera2 API changes, ensuring stable virtual camera operation on modern devices with our Zygisk fix.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 py-12" id="installation-guide">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl mb-3">Installation Guide</h2>
+            <p class="text-base text-gray-400 px-2">
+                Follow these 4 simple steps to install Foxcam on your rooted Android device.
+            </p>
+        </div>
+
+        <div class="space-y-4 mb-8">
+            <div class="relative">
+                <div class="bg-gradient-to-br from-[#5B9DFF] to-[#4A8EEE] backdrop-blur-sm rounded-2xl p-6 shadow-lg shadow-[#5B9DFF]/20 border border-[#5B9DFF]/30">
+                    <div class="flex items-start gap-4">
+                        <div class="text-5xl opacity-30 flex-shrink-0">1</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg mb-2">Unlock Your Bootloader</h3>
+                            <p class="text-sm text-gray-100 leading-relaxed mb-2">Enable Developer Options, turn on OEM unlocking, and unlock your device bootloader. This varies by device manufacturer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center py-2">
+                    <i data-lucide="chevron-down" class="w-6 h-6 text-gray-600"></i>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="bg-gradient-to-br from-[#5B9DFF] to-[#4A8EEE] backdrop-blur-sm rounded-2xl p-6 shadow-lg shadow-[#5B9DFF]/20 border border-[#5B9DFF]/30">
+                    <div class="flex items-start gap-4">
+                        <div class="text-5xl opacity-30 flex-shrink-0">2</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg mb-2">Root Your Device</h3>
+                            <p class="text-sm text-gray-100 leading-relaxed mb-2">Use any rooting method (Magisk recommended). Flash patched boot image or install via custom recovery.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center py-2">
+                    <i data-lucide="chevron-down" class="w-6 h-6 text-gray-600"></i>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="bg-gradient-to-br from-[#5B9DFF] to-[#4A8EEE] backdrop-blur-sm rounded-2xl p-6 shadow-lg shadow-[#5B9DFF]/20 border border-[#5B9DFF]/30">
+                    <div class="flex items-start gap-4">
+                        <div class="text-5xl opacity-30 flex-shrink-0">3</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg mb-2">Join Our Telegram Channel</h3>
+                            <p class="text-sm text-gray-100 leading-relaxed mb-2">Get latest updates, support, and download links.</p>
+                            <a id="tg-link-step3" target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 py-2 rounded-lg text-sm transition-all border border-white/30 mt-2">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span>https://t.me/FoxCam_Boss</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center py-2">
+                    <i data-lucide="chevron-down" class="w-6 h-6 text-gray-600"></i>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="bg-gradient-to-br from-[#5B9DFF] to-[#4A8EEE] backdrop-blur-sm rounded-2xl p-6 shadow-lg shadow-[#5B9DFF]/20 border border-[#5B9DFF]/30">
+                    <div class="flex items-start gap-4">
+                        <div class="text-5xl opacity-30 flex-shrink-0">4</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg mb-2">Get Foxcam APK</h3>
+                            <p class="text-sm text-gray-100 leading-relaxed mb-2">Download and install Foxcam APK from Telegram. Once installed, you're ready to bypass any camera restrictions.</p>
+                            <a id="tg-link-step4" target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 py-2 rounded-lg text-sm transition-all border border-white/30 mt-2">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span>https://t.me/FoxCam_Boss</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center bg-[#4CD964]/10 border border-[#4CD964]/30 rounded-2xl p-6">
+            <div class="text-4xl mb-2">✓</div>
+            <p class="text-xl text-[#4CD964] mb-1">You're done!</p>
+            <p class="text-base text-gray-300">Ready to bypass any camera restrictions.</p>
+        </div>
+    </section>
+
+    <section class="px-4 py-12">
+        <div class="bg-gradient-to-br from-yellow-600/20 to-orange-600/20 backdrop-blur-sm rounded-3xl p-8 border border-yellow-600/30 text-center shadow-2xl">
+            <h2 class="text-2xl mb-6">App Rating</h2>
+            <div class="flex justify-center gap-1 mb-4">
+                <i data-lucide="star" class="w-10 h-10 fill-yellow-400 text-yellow-400"></i>
+                <i data-lucide="star" class="w-10 h-10 fill-yellow-400 text-yellow-400"></i>
+                <i data-lucide="star" class="w-10 h-10 fill-yellow-400 text-yellow-400"></i>
+                <i data-lucide="star" class="w-10 h-10 fill-yellow-400 text-yellow-400"></i>
+                <i data-lucide="star" class="w-10 h-10 fill-yellow-400 text-yellow-400"></i>
+            </div>
+            <p class="text-4xl mb-2" id="app-rating"></p>
+            <p class="text-lg text-gray-300 mb-4" id="total-reviews"></p>
+            <p class="text-xl text-yellow-400">"Best virtual camera app for rooted Android"</p>
+        </div>
+    </section>
+
+    <section class="px-4 py-12">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl mb-3">Frequently Asked Questions</h2>
+            <p class="text-base text-gray-400 px-2">
+                Common questions about virtual camera apps and camera spoofing on Android.
+            </p>
+        </div>
+
+        <div class="space-y-3" id="faq-container"></div>
+    </section>
+
+    <section class="px-4 py-12">
+        <div class="bg-gradient-to-br from-[#5B9DFF] to-[#4A8EEE] rounded-3xl p-8 text-center shadow-2xl shadow-[#5B9DFF]/50">
+            <h2 class="text-2xl mb-3">Ready to bypass everything?</h2>
+            <p class="text-base mb-6 text-blue-100">
+                Join 10,000+ users on Telegram for latest updates, support, and downloads.
+            </p>
+            <a id="cta-telegram-btn" target="_blank" rel="noopener noreferrer"
+               class="w-full bg-white text-[#5B9DFF] px-6 py-4 rounded-xl text-lg hover:bg-gray-100 transition-all shadow-lg inline-flex items-center justify-center gap-2 active:scale-95">
+                <i data-lucide="external-link" class="w-5 h-5"></i>
+                Join Telegram Channel Now
+            </a>
+        </div>
+    </section>
+
+    <footer class="border-t border-[#5B9DFF]/20 py-8 px-4 mt-8">
+        <div class="text-center mb-6">
+            <p class="text-base mb-3">© 2026 Foxcam Project</p>
+            <p class="text-sm text-gray-400 mb-2">Best Virtual Camera App for Android</p>
+            <p class="text-sm text-gray-500 mb-6">Open Source Security Research</p>
+            
+            <div class="flex flex-col gap-3 mb-6">
+                <a id="footer-github" target="_blank" rel="noopener noreferrer"
+                   class="text-gray-400 hover:text-white transition-colors inline-flex items-center justify-center gap-2 bg-[#1A2332]/60 backdrop-blur-sm py-3 px-4 rounded-xl border border-[#5B9DFF]/20">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                    GitHub Repository
+                </a>
+                <a id="footer-docs" target="_blank" rel="noopener noreferrer"
+                   class="text-gray-400 hover:text-white transition-colors inline-flex items-center justify-center gap-2 bg-[#1A2332]/60 backdrop-blur-sm py-3 px-4 rounded-xl border border-[#5B9DFF]/20">
+                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                    Documentation
+                </a>
+                <a id="footer-privacy" target="_blank" rel="noopener noreferrer"
+                   class="text-gray-400 hover:text-white transition-colors inline-flex items-center justify-center gap-2 bg-[#1A2332]/60 backdrop-blur-sm py-3 px-4 rounded-xl border border-[#5B9DFF]/20">
+                    <i data-lucide="shield" class="w-5 h-5"></i>
+                    Privacy Policy
+                </a>
+            </div>
+        </div>
+        
+        <p class="text-center text-xs text-gray-500 leading-relaxed px-4">
+            This virtual camera android app and camera spoofer software are provided "as is" without warranty. Use at your own risk.
+        </p>
+    </footer>
+
+</div>
+
+<script>
+// FAQ Data
+const faqs = [
+    {
+        question: 'How to install virtual camera on android?',
+        answer: 'To install virtual camera on Android: (1) Root your device with Magisk, (2) Enable Zygisk in Magisk settings, (3) Install LSPosed framework, (4) Download Foxcam virtual camera APK, (5) Flash it as a Magisk module, (6) Enable Foxcam in LSPosed Manager, (7) Select target apps. This is the complete process for how to install virtual camera on android.'
+    },
+    {
+        question: 'How to fix black screen on virtual camera android?',
+        answer: 'Black screens in virtual camera apps on Android are caused by SELinux enforcement or incorrect file permissions. To fix black screen on virtual camera android: ensure root permissions are granted to the vcam module, verify your video file path is readable (/sdcard/DCIM/), and confirm Zygisk is enabled in Magisk settings. Foxcam\'s Zygisk camera spoofer integration eliminates black screen issues.'
+    },
+    {
+        question: 'Does virtual camera require root?',
+        answer: 'Yes, Foxcam virtual camera app requires root access (Magisk) and Zygisk/LSPosed to function. Non-root virtual camera solutions are typically overlays that are easily detected by modern KYC systems. How to spoof camera without root is not possible for system-level camera feed replacement. Foxcam\'s system-level HAL hooking requires root privileges to inject video at the hardware abstraction layer.'
+    },
+    {
+        question: 'How to replace android camera feed with video file on rooted devices?',
+        answer: 'To replace android camera feed with video file on rooted devices: (1) Install Foxcam virtual camera module, (2) Place your pre-recorded video in /sdcard/DCIM/ with a recognizable filename, (3) Open Foxcam configuration via LSPosed, (4) Select your video file as the camera source, (5) Ensure target app has camera permissions and Foxcam is enabled for that app in LSPosed. This is how to use video as android camera.'
+    },
+    {
+        question: 'What is the best virtual camera app for android?',
+        answer: 'Foxcam is the best virtual camera app for rooted Android devices. Compared to alternatives like GhostCam virtual camera android, Pict2Cam android, or basic vcam modules, Foxcam offers: native HAL hooking (not overlays), zero color distortion, LSPosed virtual camera module support, Zygisk camera spoofer integration, Android 11-15 compatibility, and advanced EXIF/GPS spoofing.'
+    },
+    {
+        question: 'How does virtual camera work on android?',
+        answer: 'Virtual camera works on Android by hooking into the Camera2 API at the Hardware Abstraction Layer (HAL). Foxcam uses Zygisk injection to intercept camera requests and replace the live feed with pre-recorded video or image as camera input. This camera input stream replacement happens at the system level, making it invisible to apps.'
+    },
+    {
+        question: 'Can I use OBS as a virtual camera on android?',
+        answer: 'No, OBS cannot be used as virtual camera on Android. OBS is a desktop streaming tool and does not have native Android support for virtual camera functionality. Foxcam is specifically designed for Android\'s Camera2 API and provides system-level video injection that OBS cannot replicate on mobile devices.'
+    },
+    {
+        question: 'How to fake camera on android for Instagram?',
+        answer: 'To use camera spoofer for Instagram on Android root: (1) Install Foxcam virtual camera module, (2) Enable Foxcam in LSPosed Manager, (3) Select Instagram as target app, (4) Place your pre-recorded video in /sdcard/DCIM/, (5) Configure Foxcam to use it as camera source, (6) Force stop Instagram and reopen. Use Magisk DenyList to hide root from Instagram.'
+    },
+    {
+        question: 'Virtual camera android 14 zygisk fix - how to apply?',
+        answer: 'Foxcam includes the virtual camera android 14 zygisk fix built-in. The fix addresses changes in Android 14\'s Zygote process and Camera2 API. To apply: (1) Ensure you\'re using Magisk v24+ with Zygisk enabled, (2) Install the latest Foxcam virtual camera APK (v2.0), (3) Reboot device after installation. No additional configuration needed.'
+    },
+    {
+        question: 'Is this camera spoofing app undetectable?',
+        answer: 'Foxcam camera spoofer uses native HAL hooking which is harder to detect than overlay-based fake camera apps. However, advanced apps may check for Magisk or Zygisk presence. To maximize stealth: (1) Use Magisk DenyList for target apps, (2) Install Shamiko or Zygisk-Assistant modules, (3) Enable "Enforce DenyList" in Magisk settings.'
+    },
+    {
+        question: 'Virtual camera vs real camera - what\'s the difference?',
+        answer: 'Virtual camera vs real camera: A real camera captures live video from hardware sensors. A virtual camera (like Foxcam) intercepts camera API calls and injects pre-recorded video or image as camera input instead. Virtual cameras enable pre-recorded video testing, photo as camera input, and camera feed replacement for security research.'
+    },
+    {
+        question: 'Where to download virtual camera APK safely?',
+        answer: 'Download virtual camera APK safely from the official Foxcam website or Telegram channel. Always verify the SHA256 checksum after download to ensure integrity. The fake camera app download is VirusTotal scanned and open source (GPLv3). Avoid downloading from untrusted sources.'
+    },
+    {
+        question: 'Comparison: DroidCam vs EpocCam vs vCam - which is best?',
+        answer: 'DroidCam and EpocCam are for using your phone as a webcam for PC - they don\'t provide camera feed replacement on Android. Foxcam is the best virtual camera app for Android system-level camera spoofing, pre-recorded video injection, LSPosed/Zygisk integration, zero color distortion, and Android 11-15 support.'
+    }
+];
+
+// Initialize page when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Set all image URLs
+    document.getElementById('logo-img').src = LOGO_URL;
+    document.getElementById('screenshot-1').src = SCREENSHOT_1_URL;
+    document.getElementById('screenshot-2').src = SCREENSHOT_2_URL;
+    document.getElementById('screenshot-3').src = SCREENSHOT_3_URL;
+    document.getElementById('screenshot-4').src = SCREENSHOT_4_URL;
+    
+    // Set app version and rating
+    document.getElementById('app-version').textContent = APP_VERSION;
+    document.getElementById('app-rating').textContent = APP_RATING + ' out of 5';
+    document.getElementById('total-reviews').textContent = TOTAL_REVIEWS + ' Reviews';
+    
+    // Set all Telegram links
+    document.getElementById('download-btn').href = TELEGRAM_CHANNEL;
+    document.getElementById('tg-link-step3').href = TELEGRAM_CHANNEL;
+    document.getElementById('tg-link-step4').href = TELEGRAM_CHANNEL;
+    document.getElementById('cta-telegram-btn').href = TELEGRAM_CHANNEL;
+    document.getElementById('footer-github').href = TELEGRAM_CHANNEL;
+    document.getElementById('footer-docs').href = TELEGRAM_CHANNEL;
+    document.getElementById('footer-privacy').href = TELEGRAM_CHANNEL;
+    
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Initialize Slick Slider
+    $('.screenshot-slider').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: false
+    });
+    
+    // Generate FAQ items
+    const faqContainer = document.getElementById('faq-container');
+    faqs.forEach((faq, index) => {
+        const faqItem = document.createElement('div');
+        faqItem.className = 'bg-[#1A2332]/60 backdrop-blur-sm rounded-2xl border border-[#5B9DFF]/20 overflow-hidden shadow-lg';
+        
+        faqItem.innerHTML = `
+            <button onclick="toggleFaq(${index})" 
+                    class="w-full px-5 py-4 text-left flex items-start justify-between gap-3 active:bg-[#1F2937]/30 transition-colors">
+                <span class="text-base flex-1">${faq.question}</span>
+                <i data-lucide="chevron-down" id="faq-icon-${index}" 
+                   class="w-5 h-5 flex-shrink-0 transition-transform mt-1 text-[#5B9DFF]"></i>
+            </button>
+            <div id="faq-answer-${index}" class="hidden px-5 pb-4 text-sm text-gray-300 leading-relaxed border-t border-[#5B9DFF]/20 pt-4">
+                <p class="mb-3">${faq.answer}</p>
+                <a href="${TELEGRAM_CHANNEL}" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 bg-[#5B9DFF]/20 hover:bg-[#5B9DFF]/30 backdrop-blur-sm px-4 py-2 rounded-lg text-sm transition-all border border-[#5B9DFF]/30 text-[#5B9DFF]">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                    <span>Join Telegram for Support</span>
+                </a>
+            </div>
+        `;
+        
+        faqContainer.appendChild(faqItem);
+    });
+    
+    // Re-initialize icons after adding FAQ
+    lucide.createIcons();
+});
+
+// FAQ Toggle Function
+function toggleFaq(index) {
+    const answer = document.getElementById(`faq-answer-${index}`);
+    const icon = document.getElementById(`faq-icon-${index}`);
+    
+    if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+    } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+    }
+}
+</script>
+
+</body>
+</html>
